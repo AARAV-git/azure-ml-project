@@ -1,0 +1,17 @@
+name: azureml-research-env
+channels:
+  - conda-forge
+dependencies:
+  - python=3.10
+  - pip
+  - pip:
+      - torch
+      - torchvision
+      - pandas
+      - numpy
+      - scikit-learn
+      - matplotlib
+      - seaborn
+      - mlflow
+      - azure-ai-ml
+      - tqdm
