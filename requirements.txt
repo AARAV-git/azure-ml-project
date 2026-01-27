@@ -6,3 +6,6 @@ jupyter
 mlflow
 azureml-core
 azure-ai-ml
+numpy
+scikit-learn
+joblib
