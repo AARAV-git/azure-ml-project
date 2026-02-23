@@ -1,0 +1,73 @@
+name: Autonomous Self-Healing MLOps Pipeline
+
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+
+jobs:
+  mlops-pipeline:
+    runs-on: ubuntu-latest
+
+    steps:
+      # 1️⃣ Checkout Code
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      # 2️⃣ Setup Python Environment
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      # 3️⃣ Install Dependencies
+      - name: Install Dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+
+      # 4️⃣ Generate Dataset (Autonomous Data Source)
+      - name: Generate Dataset
+        run: |
+          python src/generate_dataset.py
+
+      # 5️⃣ Data Ingestion
+      - name: Data Ingestion
+        run: |
+          python src/ingestion.py
+
+      # 6️⃣ Data Profiling
+      - name: Data Profiling
+        run: |
+          python src/profiling.py
+
+      # 7️⃣ Quality Analysis
+      - name: Data Quality Analysis
+        run: |
+          python src/quality_analysis.py
+
+      # 8️⃣ Automated Data Repair (Self-Healing)
+      - name: Automated Data Repair
+        run: |
+          python src/data_repair.py
+
+      # 9️⃣ Model Training
+      - name: Model Training
+        run: |
+          python src/train.py
+
+      # 🔟 Model Validation (Quality Gate)
+      - name: Model Validation
+        run: |
+          python src/validate.py
+
+      # 1️⃣1️⃣ Model Testing
+      - name: Model Testing
+        run: |
+          python src/test.py
+
+      # 1️⃣2️⃣ Deployment Readiness
+      - name: Deployment Ready
+        run: |
+          echo "Model passed all quality gates and is ready for deployment"
