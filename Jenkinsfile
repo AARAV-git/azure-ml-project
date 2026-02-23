@@ -12,44 +12,44 @@ pipeline {
 
         stage('Install Dependencies') {
             steps {
-                sh 'pip install -r requirements.txt'
+                bat 'python -m pip install -r requirements.txt'
             }
         }
 
         stage('Data Ingestion') {
             steps {
-                sh 'python src/ingestion.py'
+                bat 'python src/ingestion.py'
             }
         }
 
         stage('Data Profiling & Quality Analysis') {
             steps {
-                sh 'python src/profiling.py'
-                sh 'python src/quality_analysis.py'
+                bat 'python src/profiling.py'
+                bat 'python src/quality_analysis.py'
             }
         }
 
         stage('Automated Data Repair') {
             steps {
-                sh 'python src/data_repair.py'
+                bat 'python src/data_repair.py'
             }
         }
 
         stage('Model Training') {
             steps {
-                sh 'python src/train.py'
+                bat 'python src/train.py'
             }
         }
 
         stage('Model Validation') {
             steps {
-                sh 'python src/validate.py'
+                bat 'python src/validate.py'
             }
         }
 
         stage('Model Testing') {
             steps {
-                sh 'python src/test.py'
+                bat 'python src/test.py'
             }
         }
 
