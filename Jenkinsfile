@@ -37,7 +37,7 @@ pipeline {
 
         stage('Model Training') {
             steps {
-                bat 'python train.py'
+                bat 'python src/train.py'
             }
         }
 
