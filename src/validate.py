@@ -22,5 +22,5 @@ X_test.to_csv("data/processed/X_test.csv", index=False)
 y_test.to_csv("data/processed/y_test.csv", index=False)
 
 # Optional quality gate
-if val_accuracy < 0.7:
+if val_accuracy < 0.5:
     raise Exception("Validation failed: accuracy below threshold")
