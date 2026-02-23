@@ -8,7 +8,7 @@ import joblib
 path = "data/processed/cleaned_data.csv"
 
 if not os.path.exists(path):
-    raise FileNotFoundError(f"❌ Required file not found: {path}. Run data_repair.py first.")
+    raise FileNotFoundError(f" Required file not found: {path}. Run data_repair.py first.")
 
 df = pd.read_csv(path)
 
@@ -28,4 +28,4 @@ joblib.dump(model, "models/model.pkl")
 X_temp.to_csv("data/processed/X_temp.csv", index=False)
 y_temp.to_csv("data/processed/y_temp.csv", index=False)
 
-print("✅ Model training completed successfully")
+print(" Model training completed successfully")
