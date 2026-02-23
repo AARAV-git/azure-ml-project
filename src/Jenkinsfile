@@ -1,0 +1,17 @@
+stage('Model Training') {
+    steps {
+        sh 'python src/train.py'
+    }
+}
+
+stage('Model Validation') {
+    steps {
+        sh 'python src/validate.py'
+    }
+}
+
+stage('Model Testing') {
+    steps {
+        sh 'python src/test.py'
+    }
+}
