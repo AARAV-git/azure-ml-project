@@ -14,4 +14,4 @@ df = df.fillna(df.mean(numeric_only=True))
 # 🚨 THIS LINE IS CRITICAL
 df.to_csv("data/processed/cleaned_data.csv", index=False)
 
-print("✅ Cleaned dataset saved at data/processed/cleaned_data.csv")
+print("Cleaned dataset saved at data/processed/cleaned_data.csv")
