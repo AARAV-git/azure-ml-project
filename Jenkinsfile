@@ -16,6 +16,13 @@ pipeline {
             }
         }
 
+        // 🔥 NEW STAGE (THIS WAS MISSING)
+        stage('Generate Dataset') {
+            steps {
+                bat 'python src/generate_dataset.py'
+            }
+        }
+
         stage('Data Ingestion') {
             steps {
                 bat 'python src/ingestion.py'
