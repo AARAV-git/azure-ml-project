@@ -1,10 +1,9 @@
+# src/generate_dataset.py
 import pandas as pd
 import numpy as np
 import os
 
-# Ensure folders exist
 os.makedirs("data/raw", exist_ok=True)
-os.makedirs("data/processed", exist_ok=True)
 
 np.random.seed(42)
 rows = 300
@@ -20,17 +19,11 @@ data = {
 
 df = pd.DataFrame(data)
 
-# Introduce missing values (to show self-healing)
+# introduce missing values
 df.loc[df.sample(frac=0.1).index, "income"] = None
 df.loc[df.sample(frac=0.1).index, "credit_score"] = None
 
-# Save raw data
+# SAVE ONLY RAW DATA
 df.to_csv("data/raw/input.csv", index=False)
 
-# Simple cleaning (same logic as data_repair)
-df = df.fillna(df.mean(numeric_only=True))
-
-# Save cleaned data (THIS is what train.py needs)
-df.to_csv("data/processed/cleaned_data.csv", index=False)
-
-print("Dataset generated and cleaned successfully")
+print("✅ Raw dataset generated at data/raw/input.csv")
